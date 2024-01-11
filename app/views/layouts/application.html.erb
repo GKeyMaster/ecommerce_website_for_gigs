@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <%= javascript_include_tag 'https://checkout.stripe.com/checkout.js' %>
+  <% if user_signed_in? %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <ul class="topnav">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/jobs">Jobs</a></li>
+      <li><a href="/users">Manage Store</a></li>
+      <li><a href="/categories">Categories</a></li>
+      <li><%= form_tag(search_page_path, :method => "get") do %>
+      <div class="input-group">
+        <%= search_field_tag :search, params[:search], placeholder: "Search Jobs", class: "form-control" %>
+        <div class = "input-group-btn">
+          <%= button_tag "Search", :class => 'btn btn-info glyphicon glphicon-search', :name => nil %>
+        </div>
+      </div>
+      <% end %></li>
+      <li class="dropdown">
+        <button class="dropbtn"><%= current_user.fname %>
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <%= link_to('My Account', edit_user_registration_path) %>
+            <%= link_to('My Orders', user_orders_path(current_user)) %>
+            <%= link_to('Create New', new_user_job_path(current_user)) %>
+            <%= link_to('My Wallet', billing_path) %>
+            <%= link_to('Conversations', conversations_path) %>
+            <%= link_to('Log Out', destroy_user_session_path, method: :delete) %>
+        </div>
+      </li>
+      <li class="right"><a href="/about">About</a></li>
+    </ul>
+  <% else %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <ul class="topnav">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/jobs">Jobs</a></li>
+      <li><a href="/categories">Categories</a></li>
+      <li><%= form_tag(search_page_path, :method => "get") do %>
+      <div class="input-group">
+        <%= search_field_tag :search, params[:search], placeholder: "Search Jobs", class: "form-control" %>
+        <div class = "input-group-btn">
+          <%= button_tag "Search", :class => 'btn btn-info glyphicon glphicon-search', :name => nil %>
+        </div>
+      </div>
+      <% end %></li>
+      <li class="right"><a href="/users/sign_in">Log in</a></li>
+      <li class="right"><a href="/about">About</a></li>
+    </ul>
+  <% end %>
+
+  <head>
+    <title>Homegig</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <div class="card-footer bg-secondary" style="min-height:10vh; padding-top:2%; padding-bottom:2%; padding-left:5%; color:white;">
+      <div class="row">
+        <div class="col-sm-3">
+          <ul class="footer-nav">
+            <li class="footer-link"><a href="/about">About Us</a></li>
+            <li class="footer-link"><a href="/contact">Contact Us</a></li>
+            <li class="footer-link"><a href="/faq">FAQ</a></li>
+            <li class="footer-link"><a href="/social">Social Media</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul class="footer-nav">
+            <li class="footer-link"><a href="/location">Location</a></li>
+            <li class="footer-link"><a href="/privacy">Privacy Policy</a></li>
+            <li class="footer-link"><a href="/terms">Terms and Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

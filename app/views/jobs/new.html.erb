@@ -1,0 +1,42 @@
+<div class="newjob">
+  <br/>
+  <h2>Create a job</h2>
+  <% if @job.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@job.errors.count, "error") %> prohibited
+        this job from being saved:
+      </h2>
+      <ul>
+        <% @job.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for :job, :url => user_jobs_path(@user, @job) do |f| %>
+    <div class="field">
+      <b><%= f.label :name %><br /> </b>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <b><%= f.label :subcategory_id %><br /> </b>
+      <%= f.select :subcategory_id, Subcategory.pluck(:name, :id)%>
+    </div>
+    <br/>
+    <div class="field">
+      <b><%= f.label :cost %><br /> </b>
+      <%= f.number_field :cost, min:1 %>
+    </div>
+    <br/>
+    <div class="description">
+      <b><%= f.label :description %><br /> </b>
+      <%= f.text_area :description %>
+    </div>
+    <br/>
+    <div class="actions">
+      <b> <%= f.submit "Create" %> </b>
+    </div>
+  <% end %>
+</div>

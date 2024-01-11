@@ -1,0 +1,596 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+ @import "bootstrap";
+ @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
+ @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic);
+
+ // variables
+ $card-width:  350px;
+ $card-height: 450px;
+ $h-color:     #9CC9E3;
+ $yellow:      #D0BB57;
+ $txt-color:   #DCE3E7;
+
+ * {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+ }
+
+ .eachjob{
+  width: $card-width;
+  height: $card-height;
+  display: inline-block;
+  position: relative;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, .5);
+  text-align: center;
+
+  &.spring-fever{
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/bg-blog-card.jpg) no-repeat;
+  }
+
+  .color-overlay{
+    /* Rectangle 11: */
+    background: rgba(84,104,110,0.4);
+    width: $card-width;
+    height: $card-height;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    transition: background .3s cubic-bezier(.33,.66,.66,1);
+  }
+  .gradient-overlay{
+    /* bg-gradient: */
+    background-image: -webkit-linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
+    background-image: -moz-linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
+    background-image: -o-linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
+    background-image: linear-gradient(rgba(0,0,0,0.00) 0%, rgba(0,0,0,.6) 21%);
+    width: $card-width;
+    height: $card-height;
+    position: absolute;
+    top: 350px;
+    left: 0;
+    z-index: 15;
+  }
+
+  &:hover{
+
+    .card-info{
+      opacity: 1;
+      bottom: 120px;
+    }
+    .color-overlay{
+      background: rgba(84,104,110,0.8);
+    }
+  }
+}
+
+.title-content{
+  text-align: center;
+  margin: 70px 0 0 0;
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+h3{
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: $h-color;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 0;
+}
+hr{
+  width: 50px;
+  height: 3px;
+  margin: 20px auto;
+  border: 0;
+  background: $yellow;
+}
+.intro{
+  width: 170px;
+  margin: 0 auto;
+  color: $txt-color;
+  font-family: 'Droid Serif', serif;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 18px;
+}
+.card-info{
+  width: 100%;
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  margin: 0 auto;
+  padding: 0 50px;
+  color: $txt-color;
+  font-family: 'Droid Serif', serif;
+  font-style: 16px;
+  line-height: 24px;
+  z-index: 20;
+  opacity: 0;
+  transition: bottom .3s, opacity .3s cubic-bezier(.33,.66,.66,1);
+}
+
+.utility-info{
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  z-index: 20;
+}
+.utility-list{
+  list-style-type: none;
+  margin: 0 0 30px 20px;
+  padding: 0;
+  width: 100%;
+
+  li{
+    margin: 0 15px 0 0;
+    padding: 0 0 0 22px;
+    display: inline-block;
+    color: $txt-color;
+    font-family: 'Roboto', sans-serif;
+
+    &.usersicon{
+      height: 8vh;
+    }
+    &.date{
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/icon-calendar.svg) no-repeat 0 .1em;
+    }
+  }
+}
+
+ body {
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, Helvetica;
+  letter-spacing: 0.02em;
+   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+ }
+
+ .text-block {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  background-color: rgba(0,128,0, 0.5);
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.text-block2 {
+  position: absolute;
+  top: 300px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+ .wallet {
+   text-align: center;
+ }
+
+ /* width */
+ ::-webkit-scrollbar {
+   width: 10px;
+ }
+
+ /* Track */
+ ::-webkit-scrollbar-track {
+   background: #f1f1f1;
+ }
+
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background: #888;
+ }
+
+ /* Handle on hover */
+ ::-webkit-scrollbar-thumb:hover {
+   background: #555;
+ }
+
+ ul.topnav {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   background-color: #333;
+   color: white;
+ }
+
+ ul.topnav li {float: left;}
+
+ ul.topnav li a {
+   display: block;
+   color: white;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+ }
+
+ .dropdown:hover .dropbtn {
+   background-color: red;
+ }
+  ul.topnav li.dropdown {
+   float: right;
+   overflow: hidden;
+ }
+
+ .newcard {
+    align-items: center;
+  }
+
+.newcard{
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.newcard input, select{
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  margin: 8px 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.newcard input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.newcard input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+ .description input{
+   height: 10em;
+ }
+ .dropdown .dropbtn {
+   font-size: 16px;
+   border: none;
+   outline: none;
+   color: white;
+   padding: 14px 16px;
+   min-width: 160px;
+   background-color: inherit;
+   font-family: inherit;
+   margin: 0;
+ }
+ .dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+  float: inherit;
+  color: black;
+  display: inline-block;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  color: red;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.sign-up {
+  background-color: rgba(173,216,230,0.6);
+  border-radius: 10%;
+  margin-left: 25%;
+  margin-top: 5%;
+  margin-bottom:5%;
+  width: 50%;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.log-in {
+  background-color: rgba(173,216,230,0.6);
+  border-radius: 10%;
+  margin-left: 25%;
+  margin-top: 10%;
+  margin-bottom:10%;
+  width: 50%;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.log-in input[type=email], .log-in input[type=password]{
+  height: 5vh;
+  width: 50%;
+}
+
+/* Button */
+.log-in input[type=submit], .log-in button[type=submit]{
+  text-transform: uppercase;
+  padding: 10px 60px;
+  color: white;
+  background: #17A2B8;
+  font-weight: normal;
+}
+
+
+.newjob{
+  // margin-left: 40%;
+  // margin-right: 40%;
+  background-color: rgba(173,216,230,0.6);
+  border-radius: 10%;
+  margin-left: 25%;
+  margin-top: 5%;
+  margin-bottom:5%;
+  width: 50%;
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  align-items: center;
+}
+
+.newjob input, select{
+  width: 90%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  margin: 8px 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.newjob input[type=submit] {
+  width: 90%;
+  background-color: #4CAF50;
+  color: white;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.input-group {
+  padding: 8px;
+}
+
+.input-group2{
+  display: inline;
+  padding:8px;
+  width:75%;
+}
+
+.newjob input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+ ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ ul.topnav li a.active {background-color: #4CAF50;}
+
+ ul.topnav li.right {float: right;}
+
+.edit_user{
+  align-items: center;
+}
+
+.edit_user{
+  margin-left: 10%;
+}
+
+.edit_user input, select{
+  width: 50%;
+  display: inline-block;
+  border: 1px solid #ccc;
+  margin: 8px 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.edit_user input[type=submit] {
+  width: 50%;
+  background-color: #4CAF50;
+  color: white;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit_user input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+ #jobs {
+   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+ }
+
+ #jobs td, #jobs th {
+   border: 1px solid #ddd;
+   padding: 8px;
+ }
+
+ #jobs tr:nth-child(even){background-color: #f2f2f2;}
+
+ #jobs tr:hover {background-color: #ddd;}
+
+ #jobs th {
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: #4CAF50;
+   color: white;
+ }
+
+ #wallets {
+   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+ }
+
+ #wallets td, #wallets th {
+   border: 1px solid #ddd;
+   padding: 8px;
+ }
+
+ #wallets tr:nth-child(even){background-color: #f2f2f2;}
+
+ #wallets tr:hover {background-color: #ddd;}
+
+ #wallets th {
+   padding-top: 12px;
+   padding-bottom: 12px;
+   text-align: left;
+   background-color: #fcba03;
+   color: white;
+ }
+
+ .jobwrapper {
+   position: relative;
+   perspective: 40em;
+   display: grid;
+   transform-style: preserve-3d;
+ }
+
+ .jobcard {
+   margin-bottom: 15%;
+   margin-left: 21vw;
+   grid-area: 1 / 1;
+   height: 60vh;
+   width: 50vw;
+   transform: translateX(10px) rotateY(25deg) rotateX(10deg);
+   background: rgba(249, 198, 26, 0.88);
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   padding: 30px;
+   color: #000;
+   text-transform: uppercase;
+   font-weight: 900;
+   backface-visibility: hidden;
+   box-shadow: 0 10px 30px -3px rgba(0,0,0,.1);
+ }
+
+ .jobcard {
+   text-align: center;
+   font-size: 30px;
+   font-weight: 400;
+   line-height: 1;
+   color: black;
+   padding: 0 5px;
+   margin-top: 13vh;
+   margin-bottom: 10%;
+   margin-right: 3%;
+   display: inline-block;
+   transform: translate(-1px, 1px) scale(0.75);
+   transform-origin: right center;
+ }
+
+ .jobwrapper:before {
+   --bw: 9px;
+   grid-area: 1 / 1;
+   content: '';
+   backface-visibility: hidden;
+   height: 70%;
+   width: 51%;
+   margin-top: 10vh;
+   margin-left: 20vw;
+   background: transparent;
+   transform: translateX(-60px) rotateY(-30deg) rotateX(15deg) scale(1.03);
+   pointer-events: none;
+   border: var(--bw) solid grey;
+   box-sizing: content-box;
+ }
+
+
+ .jobwrapper:hover > div,
+ .jobwrapper:hover:before {
+   transform: none;
+ }
+
+
+ .jobwrapper > div,
+ .jobwrapper:before {
+   will-change: transform;
+   transition: .3s transform cubic-bezier(.25,.46,.45,1);
+ }
+
+ @media screen and (max-width: 600px) {
+   ul.topnav li.right,
+   ul.topnav li {float: none;}
+ }
+
+ .footer-nav{
+   list-style-type: none;
+   color:white;
+ }
+
+ .footer-link a:link {
+  color: white;
+}
+
+.footer-link a:visited{
+  color:white;
+}
+
+ .footer-link a:hover{
+   color:#17a2b8;
+   text-decoration: none;
+ }
+
+ .personal_message{
+  padding-left: 20px;
+}
+
+.conversations_list{
+  padding-left: 20px;
+}
+
+.conversation_view{
+  padding-left: 20px;
+}
+
+.cat_subcat{
+  padding-left: 10px;
+}
